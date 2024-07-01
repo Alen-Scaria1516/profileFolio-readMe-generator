@@ -4,6 +4,7 @@ import AboutSection from '../components/AboutSection';
 import MarkdownPreview from '../components/MarkdownPreview';
 import { generateMarkdown, downloadMarkdown } from '@/utils/markdownUtils';
 import Skills from '../components/Skills';
+import SocialLinks, { SocialLinksData } from '../components/SocialLinks';
 
 interface AboutData {
     working: string;
@@ -17,7 +18,17 @@ export default function Home() {
         learning: '',
         funFact: '',
     });
+
     const [skills, setSkills] = useState<string[]>([]);
+
+    const [socialLinks, setSocialLinks] = useState<SocialLinksData>({
+        youtube: '',
+        linkedin: '',
+        stackoverflow: '',
+        facebook: '',
+        instagram: '',
+    });
+
     const handleAboutUpdate = (data: AboutData) => {
         setAboutData(data);
     };
@@ -26,7 +37,11 @@ export default function Home() {
         setSkills(newSkills);
     };
 
-    const markdown = generateMarkdown(aboutData, skills);
+    const handleSocialLinksChange = (newLinks: SocialLinksData) => {
+        setSocialLinks(newLinks);
+    };
+
+    const markdown = generateMarkdown(aboutData, skills, socialLinks);
 
     const handleDownloadMarkdown = () => {
         downloadMarkdown(markdown);
@@ -38,7 +53,8 @@ export default function Home() {
                 {/* Section 1: Input Forms */}
                 <div className="col-span-3 bg-white shadow-md rounded-lg p-4 overflow-auto">
                     <AboutSection onUpdate={handleAboutUpdate} />
-                    <Skills onSkillsChange={handleSkillsChange} /> 
+                    <Skills onSkillsChange={handleSkillsChange} />
+                    <SocialLinks onSocialLinksChange={handleSocialLinksChange} />
                 </div>
 
                 {/* Section 2: Display MD File */}
