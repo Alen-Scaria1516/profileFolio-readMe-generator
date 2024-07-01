@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import AboutSection from '../components/AboutSection';
 import MarkdownPreview from '../components/MarkdownPreview';
 import { generateMarkdown, downloadMarkdown } from '@/utils/markdownUtils';
+import Skills from '../components/Skills';
 
 interface AboutData {
     working: string;
@@ -16,12 +17,16 @@ export default function Home() {
         learning: '',
         funFact: '',
     });
-
+    const [skills, setSkills] = useState<string[]>([]);
     const handleAboutUpdate = (data: AboutData) => {
         setAboutData(data);
     };
 
-    const markdown = generateMarkdown(aboutData);
+    const handleSkillsChange = (newSkills: string[]) => {
+        setSkills(newSkills);
+    };
+
+    const markdown = generateMarkdown(aboutData, skills);
 
     const handleDownloadMarkdown = () => {
         downloadMarkdown(markdown);
@@ -33,6 +38,7 @@ export default function Home() {
                 {/* Section 1: Input Forms */}
                 <div className="col-span-3 bg-white shadow-md rounded-lg p-4 overflow-auto">
                     <AboutSection onUpdate={handleAboutUpdate} />
+                    <Skills onSkillsChange={handleSkillsChange} /> 
                 </div>
 
                 {/* Section 2: Display MD File */}

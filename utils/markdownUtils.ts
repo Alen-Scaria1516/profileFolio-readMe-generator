@@ -2,12 +2,25 @@ export const generateMarkdown = (aboutData: {
     working: string;
     learning: string;
     funFact: string;
-}): string => {
+}, skills: string[]): string => {
     return `# Hello Folks 👋
 
+# Little About Me
 - 🔭 I'm currently working on ${aboutData.working}
 - 🌱 I'm currently learning ${aboutData.learning}
 - ⚡ Fun fact: ${aboutData.funFact}
+
+# 👨‍💻 Technologies I Know 
+${skills.length > 0 ? `
+<p align="center">
+    <a href="https://skillicons.dev">
+        <img src="https://skillicons.dev/icons?i=${skills.join(',')}&perline=14" />
+    </a>
+</p>
+    ` : ''}
+
+# 📊 GitHub Statistics  
+
 `;};
 
 export const downloadMarkdown = (markdown: string) => {
