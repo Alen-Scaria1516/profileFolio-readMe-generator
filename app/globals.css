@@ -9,3 +9,40 @@ html {
     /* background-image: linear-gradient( 112.1deg,  rgba(32,38,57,1) 11.4%, rgba(63,76,119,1) 70.2% ); */
     background: white;
   }
+
+  .preview-container {
+    padding: 20px;
+    background-color: #2d2d2d;
+    color: #ffffff;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .preview-container h1,
+  .preview-container h2,
+  .preview-container h3 {
+    border-bottom: 1px solid #555;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .preview-container img {
+    max-width: 100%;
+    display: block;
+    margin: 10px 0;
+  }
+  
+  .preview-container a {
+    color: #1e90ff;
+    text-decoration: none;
+  }
+  
+  .preview-container a:hover {
+    text-decoration: underline;
+  }
+  
+  .preview-container .about-me,
+  .preview-container .tech-stack,
+  .preview-container .github-stats {
+    margin-bottom: 20px;
+  }
