@@ -1,71 +1,71 @@
 'use client'
-import { ReadMeContextProvider } from "@/context/ReadMeContextProvider";
-import MarkdownPreview from "../components/markdownPreview";
-import Section from "../components/Section";
+import React, { useState } from 'react';
+import AboutSection from '../components/AboutSection';
+import MarkdownPreview from '../components/MarkdownPreview';
+import { generateMarkdown, downloadMarkdown } from '@/utils/markdownUtils';
 
-const ReadMePage = () => {
-    const handleDownloadMarkdown = (): void => {
-        const markdownContent = document.getElementById('markdown-content') as HTMLElement;
+interface AboutData {
+    working: string;
+    learning: string;
+    funFact: string;
+}
 
-        if (markdownContent) {
-            const tempElement = document.createElement('a');
-            tempElement.setAttribute(
-                'href',
-                `data:text/markdown;charset=utf-8,${encodeURIComponent(markdownContent.innerText)}`,
-            );
-            tempElement.setAttribute('download', 'README.md');
-            tempElement.style.display = 'none';
-            document.body.appendChild(tempElement);
-            tempElement.click();
-            document.body.removeChild(tempElement);
-        } else {
-            console.error('Markdown content element not found');
-        }
+export default function Home() {
+    const [aboutData, setAboutData] = useState<AboutData>({
+        working: '',
+        learning: '',
+        funFact: '',
+    });
+
+    const handleAboutUpdate = (data: AboutData) => {
+        setAboutData(data);
+    };
+
+    const markdown = generateMarkdown(aboutData);
+
+    const handleDownloadMarkdown = () => {
+        downloadMarkdown(markdown);
     };
 
     return (
-        <ReadMeContextProvider>
-            <div className="container mx-auto p-4 h-screen">
-                <div className="grid grid-cols-12 gap-4 h-full">
-                    {/* Section 1: Input Forms */}
-                    <Section />
+        <div className="container mx-auto p-4 h-screen">
+            <div className="grid grid-cols-12 gap-4 h-full">
+                {/* Section 1: Input Forms */}
+                <div className="col-span-3 bg-white shadow-md rounded-lg p-4 overflow-auto">
+                    <AboutSection onUpdate={handleAboutUpdate} />
+                </div>
 
-                    {/* Section 2: Display MD File */}
-                    <div className="col-span-6 bg-white shadow-md rounded-lg p-4 overflow-auto">
-                        <h2 className="text-lg font-semibold mb-4">Markdown Preview</h2>
-                        <div className="w-full text-sm text-gray-900 shadow-xl mt-2 p-4 bg-gray-100 border-2 border-solid border-gray-800" id="markdown-box">
-                            <MarkdownPreview />
-                        </div>
-                        <div className="flex justify-end m-10">
-                            <button
-                                onClick={handleDownloadMarkdown}
-                                className="w-auto bg-green-500 text-white py-2 px-4 rounded hover:bg-green-300 transition duration-200">
-                                Generate ReadMe
-                            </button>
-                        </div>
+                {/* Section 2: Display MD File */}
+                <div className="col-span-6 bg-white shadow-md rounded-lg p-4 overflow-auto">
+                    <h2 className="text-lg font-semibold mb-4">Markdown Preview</h2>
+                    <div className="w-full shadow-xl mt-2 p-4 bg-white border border-gray-200 rounded-lg">
+                        <MarkdownPreview markdown={markdown} />
                     </div>
-
-                    {/* Section 3: Select Templates */}
-                    <div className="col-span-3 bg-white shadow-md rounded-lg p-4 overflow-auto">
-                        <h2 className="text-lg font-semibold mb-4">Select Template</h2>
-                        <div className="space-y-2">
-                            <button className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
-                                Template 1
-                            </button>
-                            <button className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
-                                Template 2
-                            </button>
-                            <button className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
-                                Template 3
-                            </button>
-                        </div>
+                    <div className="flex justify-end mt-4">
+                        <button
+                            onClick={handleDownloadMarkdown}
+                            className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition duration-200">
+                            Generate ReadMe
+                        </button>
                     </div>
                 </div>
 
+                {/* Section 3: Select Templates */}
+                <div className="col-span-3 bg-white shadow-md rounded-lg p-4 overflow-auto">
+                    <h2 className="text-lg font-semibold mb-4">Select Template</h2>
+                    <div className="space-y-2">
+                        <button className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
+                            Template 1
+                        </button>
+                        <button className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
+                            Template 2
+                        </button>
+                        <button className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
+                            Template 3
+                        </button>
+                    </div>
+                </div>
             </div>
-
-        </ReadMeContextProvider>
+        </div>
     );
 }
-
-export default ReadMePage;

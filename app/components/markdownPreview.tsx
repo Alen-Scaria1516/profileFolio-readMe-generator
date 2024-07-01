@@ -1,27 +1,30 @@
-import React from 'react';
-import { useReadMeContext } from '@/context/ReadMeContextProvider';
+import React, { useEffect, useState } from 'react';
+import MarkdownIt from 'markdown-it';
+import 'github-markdown-css/github-markdown.css';
 
-export const TitlePreview = () => {
-    return <h1 className="text-center">Hello, &lt;coders/&gt;!</h1>;
-};
+interface MarkdownPreviewProps {
+    markdown: string;
+}
 
-const MarkdownPreview: React.FC = () => {
-    const { sections } = useReadMeContext();
+const MarkdownPreview: React.FC<MarkdownPreviewProps> = ({ markdown }) => {
+    const [renderedMarkdown, setRenderedMarkdown] = useState('');
+
+    useEffect(() => {
+        const md = new MarkdownIt({
+            html: true,
+            linkify: true,
+            typographer: true,
+            breaks: true,
+        });
+
+        setRenderedMarkdown(md.render(markdown));
+    }, [markdown]);
 
     return (
-        <div id="markdown-content">
-            <TitlePreview />
-            <br />
-            <div>
-                <p>🔭 I'm currently working on {sections.currentWork}</p>
-            </div>
-            <div>
-                <p>🌱 I'm currently learning {sections.currentLearning}</p>
-            </div>
-            <div>
-                <p> ⚡ Fun facts {sections.funFacts}</p>
-            </div>
-        </div>
+        <div
+            className="markdown-body"
+            dangerouslySetInnerHTML={{ __html: renderedMarkdown }}
+        />
     );
 };
 
