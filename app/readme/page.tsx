@@ -1,3 +1,4 @@
+
 "use client";
 import React, { useState } from "react";
 import AboutSection from "../components/AboutSection";
@@ -28,6 +29,7 @@ export default function Home() {
 
   const markdown = generateMarkdown(aboutData, skills);
 
+
   const handleDownloadMarkdown = () => {
     downloadMarkdown(markdown);
   };
@@ -35,6 +37,7 @@ export default function Home() {
   const handleCopyMarkdown = () => {
      copyMarkdown(markdown);
   }
+
 
   return (
     <div className="container mx-auto p-4 h-screen">
