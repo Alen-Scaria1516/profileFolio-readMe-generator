@@ -28,6 +28,7 @@ export default function Home() {
         facebook: '',
         instagram: '',
     });
+    const [selectedTemplate, setSelectedTemplate] = useState('template1');
 
     const handleAboutUpdate = (data: AboutData) => {
         setAboutData(data);
@@ -41,7 +42,7 @@ export default function Home() {
         setSocialLinks(newLinks);
     };
 
-    const markdown = generateMarkdown(aboutData, skills, socialLinks);
+    const markdown = generateMarkdown(aboutData, skills, socialLinks,selectedTemplate);
 
     const handleDownloadMarkdown = () => {
         downloadMarkdown(markdown);
@@ -84,13 +85,13 @@ export default function Home() {
                 <div className="col-span-3 bg-white shadow-md rounded-lg p-4 overflow-auto">
                     <h2 className="text-lg font-semibold mb-4">Select Template</h2>
                     <div className="space-y-2">
-                        <button className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
+                        <button onClick={() => setSelectedTemplate('template1')} className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
                             Template 1
                         </button>
-                        <button className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
+                        <button   onClick={() => setSelectedTemplate('template2')} className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
                             Template 2
                         </button>
-                        <button className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
+                        <button onClick={() => setSelectedTemplate('template3')} className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
                             Template 3
                         </button>
                     </div>
