@@ -1,4 +1,5 @@
 import { SocialLinksData } from '@/app/components/SocialLinks';
+import toast from "react-hot-toast";
 
 export const generateMarkdown = (aboutData: {
     working: string;
@@ -26,13 +27,22 @@ export const generateMarkdown = (aboutData: {
 
     return `<h1 align="center"> Hello Folks 👋</h1>
 
-<p><img align="right" height="250" width="200" src="https://raw.githubusercontent.com/SubhadeepZilong/SubhadeepZilong/main/icons/animation_500_kxa883sd.gif" alt="SubhadeepZilong" /></p>
-
 ## 🙂 About Me
+<table align="center"  width="100%">
+<tr border="none">
+<td width="60%" align="left">
+
 
 - 🔭 I'm currently working on ${aboutData.working}
 - 🌱 I'm currently learning ${aboutData.learning}
 - ⚡ Fun fact: ${aboutData.funFact}
+
+</td>
+<td width="40%" align="center">
+  <img align="center" alt="Coding" height="250" width="300" src="https://raw.githubusercontent.com/SubhadeepZilong/SubhadeepZilong/main/icons/animation_500_kxa883sd.gif">
+</td>
+</tr>
+</table>
 
 ## 👨‍💻 Technologies I Know 
 ${skills.length > 0 ? `
@@ -54,6 +64,11 @@ ${Object.values(socialLinks).some(link => link) ? `
 `;
 };
 
+export const copyMarkdown = (markdown: string) => {
+    navigator.clipboard.writeText(markdown);
+    toast.success("Copied!")
+}
+
 export const downloadMarkdown = (markdown: string) => {
     const blob = new Blob([markdown], { type: 'text/markdown' });
     const url = URL.createObjectURL(blob);
@@ -64,4 +79,7 @@ export const downloadMarkdown = (markdown: string) => {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+
+    // alert for download
+    toast.success("Downloading!")
 };

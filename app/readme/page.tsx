@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import AboutSection from '../components/AboutSection';
 import MarkdownPreview from '../components/MarkdownPreview';
-import { generateMarkdown, downloadMarkdown } from '@/utils/markdownUtils';
+import { generateMarkdown, downloadMarkdown, copyMarkdown } from '@/utils/markdownUtils';
 import Skills from '../components/Skills';
 import SocialLinks, { SocialLinksData } from '../components/SocialLinks';
 
@@ -47,6 +47,10 @@ export default function Home() {
         downloadMarkdown(markdown);
     };
 
+    const handleCopyMarkdown = () => {
+        copyMarkdown(markdown);
+    }
+
     return (
         <div className="container mx-auto p-4 h-screen">
             <div className="grid grid-cols-12 gap-4 h-full">
@@ -63,11 +67,15 @@ export default function Home() {
                     <div className="w-full shadow-xl mt-2 p-4 bg-white border border-gray-200 rounded-lg">
                         <MarkdownPreview markdown={markdown} />
                     </div>
-                    <div className="flex justify-end mt-4">
+                    <div className="flex justify-end mt-4 gap-4">
+                        <button onClick={handleCopyMarkdown} className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition duration-200">
+                            Copy ReadMe
+                        </button>
                         <button
                             onClick={handleDownloadMarkdown}
-                            className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition duration-200">
-                            Generate ReadMe
+                            className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition duration-200"
+                        >
+                            Download ReadMe
                         </button>
                     </div>
                 </div>
