@@ -1,10 +1,11 @@
 'use client'
 import React, { useState } from 'react';
 import AboutSection from '../components/AboutSection';
-import MarkdownPreview from '../components/MarkdownPreview';
+import MarkdownPreview from '../components/markdownPreview';
 import { generateMarkdown, downloadMarkdown, copyMarkdown } from '@/utils/markdownUtils';
 import Skills from '../components/Skills';
 import SocialLinks, { SocialLinksData } from '../components/SocialLinks';
+import {Button} from '@/components/ui/button'
 
 interface AboutData {
     working: string;
@@ -69,15 +70,12 @@ export default function Home() {
                         <MarkdownPreview markdown={markdown} />
                     </div>
                     <div className="flex justify-end mt-4 gap-4">
-                        <button onClick={handleCopyMarkdown} className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition duration-200">
+                        <Button onClick={handleCopyMarkdown} className="bg-green-500 text-white hover:bg-green-700">
                             Copy ReadMe
-                        </button>
-                        <button
-                            onClick={handleDownloadMarkdown}
-                            className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition duration-200"
-                        >
+                        </Button>
+                        <Button onClick={handleDownloadMarkdown} className="bg-green-500 text-white hover:bg-green-700">
                             Download ReadMe
-                        </button>
+                        </Button>
                     </div>
                 </div>
 
