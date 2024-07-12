@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import GitHubStatsInput from './Githubcomp';
 interface SocialLinksProps {
     onSocialLinksChange: (links: SocialLinksData) => void;
 }
@@ -10,6 +10,7 @@ export interface SocialLinksData {
     stackoverflow: string;
     facebook: string;
     instagram: string;
+    
 }
 
 const SocialLinks: React.FC<SocialLinksProps> = ({ onSocialLinksChange }) => {
@@ -44,8 +45,10 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ onSocialLinksChange }) => {
                         placeholder={`Enter your ${platform} profile URL`}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
+                   
                 </div>
             ))}
+            <GitHubStatsInput />
         </div>
     );
 };

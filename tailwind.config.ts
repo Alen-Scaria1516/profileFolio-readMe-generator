@@ -14,6 +14,14 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
+    keyframes: {
+      shine: {
+        '100%': { left: '125%' },
+      },
+    },
+    animation: {
+      shine: 'shine 0.75s',
+    },
   },
   plugins: [],
 };

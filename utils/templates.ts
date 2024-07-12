@@ -1,5 +1,3 @@
-// templates.ts
-
 import { SocialLinksData } from '@/app/components/SocialLinks';
 
 const generateSocialLinksHTML = (links: SocialLinksData): string => {
@@ -51,7 +49,10 @@ ${skills.length > 0 ? `
 </p>
     ` : ''}
 
-## 📊 GitHub Statistics  
+## 📊 GitHub Statistics
+<p align="center">
+    <img src="https://github-readme-stats.vercel.app/api?username=sudharsan3110&show_icons=true&theme=radial" alt="GitHub Stats" />
+</p>
 
 ## 🤝Connect with me:
 ${Object.values(socialLinks).some(link => link) ? `
@@ -70,7 +71,6 @@ export const template2 = (aboutData: {
 
 # Hello 👋 coders/>
 
-
 ${Object.values(socialLinks).some(link => link) ? `<p align="left" style="display: flex; justify-content: start; gap: 10px;">${generateSocialLinksHTML(socialLinks)}</p>
     ` : ''}
 
@@ -88,6 +88,12 @@ ${skills.length > 0 ? `<p align="left">
         </a>
     </p>
         ` : ''}
+        
+## 📊 GitHub Statistics
+<p align="center">
+    <img src="https://github-readme-stats.vercel.app/api?username=sudharsan3110&show_icons=true&theme=gruvbox" alt="GitHub Stats" />
+</p>
+
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
     `;
 
@@ -116,9 +122,14 @@ ${skills.length > 0 ? `
 </p>
     ` : ''}
 
+## 📊 GitHub Statistics
+<p align="center">
+    <img src="https://github-readme-stats.vercel.app/api?username=sudharsan3110&show_icons=true&theme=transparent" alt="GitHub Stats" />
+</p>
+
 ## 🔗 Social Links:
 ${Object.values(socialLinks).some(link => link) ? `
-<p align="left" style="display: flex; justify-content: start; gap: 10px;">${generateSocialLinksHTML(socialLinks)}
+<p align="center" style="display: flex; justify-content: start; gap: 10px;">${generateSocialLinksHTML(socialLinks)}
 </p>
 ` : ''}
     `;
