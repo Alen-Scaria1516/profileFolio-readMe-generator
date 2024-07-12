@@ -5,7 +5,7 @@ import MarkdownPreview from '../components/markdownPreview';
 import { generateMarkdown, downloadMarkdown, copyMarkdown } from '@/utils/markdownUtils';
 import Skills from '../components/Skills';
 import SocialLinks, { SocialLinksData } from '../components/SocialLinks';
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
 interface AboutData {
     working: string;
@@ -43,7 +43,7 @@ export default function Home() {
         setSocialLinks(newLinks);
     };
 
-    const markdown = generateMarkdown(aboutData, skills, socialLinks,selectedTemplate);
+    const markdown = generateMarkdown(aboutData, skills, socialLinks, selectedTemplate);
 
     const handleDownloadMarkdown = () => {
         downloadMarkdown(markdown);
@@ -83,15 +83,26 @@ export default function Home() {
                 <div className="col-span-3 bg-white shadow-md rounded-lg p-4 overflow-auto">
                     <h2 className="text-lg font-semibold mb-4">Select Template</h2>
                     <div className="space-y-2">
-                        <button onClick={() => setSelectedTemplate('template1')} className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
-                            Template 1
-                        </button>
-                        <button   onClick={() => setSelectedTemplate('template2')} className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
-                            Template 2
-                        </button>
-                        <button onClick={() => setSelectedTemplate('template3')} className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
-                            Template 3
-                        </button>
+                        <div className=' display-flex p-2  space-y-3 rounded-xl  '>
+                            <div className='  bg-slate-400'>
+                                <button onClick={() => setSelectedTemplate('template1')} className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
+                                    Template 1
+                                    <img src="/Preview1.png" alt="PREVIEW_IMAGE" width={300} height={300} onClick={() => setSelectedTemplate('template1')} className='cursor-pointer rounded-lg' />
+                                </button>
+                            </div>
+                            <div className=' bg-slate-400'>
+                                <button onClick={() => setSelectedTemplate('template2')} className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
+                                    Template 2
+                                    <img src="/Preview2.png" alt="PREVIEW_IMAGE" width={300} height={300} onClick={() => setSelectedTemplate('template2')} className='cursor-pointer rounded-lg' />
+                                </button>
+                            </div>
+                            <div className=' bg-slate-400'>
+                                <button onClick={() => setSelectedTemplate('template3')} className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
+                                    Template 3
+                                    <img src="/Preview3.png" alt="PREVIEW_IMAGE" width={300} height={300} onClick={() => setSelectedTemplate('template3')} className='cursor-pointer rounded-lg' />
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
