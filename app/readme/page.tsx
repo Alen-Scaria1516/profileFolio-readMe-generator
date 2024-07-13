@@ -84,20 +84,20 @@ export default function Home() {
                     <h2 className="text-lg font-semibold mb-4">Select Template</h2>
                     <div className="space-y-2">
                         <div className=' display-flex p-2  space-y-3 rounded-xl  '>
-                            <div className='  bg-slate-400'>
-                                <button onClick={() => setSelectedTemplate('template1')} className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
+                            <div className='  bg-gray-100'>
+                                <button onClick={() => setSelectedTemplate('template1')} className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-slate-400 transition duration-200">
                                     Template 1
                                     <img src="/Preview1.png" alt="PREVIEW_IMAGE" width={300} height={300} onClick={() => setSelectedTemplate('template1')} className='cursor-pointer rounded-lg' />
                                 </button>
                             </div>
-                            <div className=' bg-slate-400'>
-                                <button onClick={() => setSelectedTemplate('template2')} className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
+                            <div className=' bg-gray-100'>
+                                <button onClick={() => setSelectedTemplate('template2')} className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-slate-400 transition duration-200">
                                     Template 2
                                     <img src="/Preview2.png" alt="PREVIEW_IMAGE" width={300} height={300} onClick={() => setSelectedTemplate('template2')} className='cursor-pointer rounded-lg' />
                                 </button>
                             </div>
-                            <div className=' bg-slate-400'>
-                                <button onClick={() => setSelectedTemplate('template3')} className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
+                            <div className=' bg-gray-100'>
+                                <button onClick={() => setSelectedTemplate('template3')} className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-slate-400 transition duration-200">
                                     Template 3
                                     <img src="/Preview3.png" alt="PREVIEW_IMAGE" width={300} height={300} onClick={() => setSelectedTemplate('template3')} className='cursor-pointer rounded-lg' />
                                 </button>
