@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import AboutSection from '../components/AboutSection';
-import MarkdownPreview from '../components/markdownPreview.tsx'
+import MarkdownPreview from '../components/markdownPreview'
 import { generateMarkdown, downloadMarkdown, copyMarkdown } from '@/utils/markdownUtils';
 import Skills from '../components/Skills';
 import SocialLinks, { SocialLinksData } from '../components/SocialLinks';
@@ -89,13 +89,13 @@ export default function Home() {
                     <div className="space-y-2">
                         <div className=' display-flex p-2  space-y-3 rounded-xl  '>
                         <div className='  border-gray-300  bg-gray-900 relative overflow-hidden'>
-                       <h1 className=' border border-gray-500 w-full bg-white py-2 px-4  text-black text-center   '>Template 1</h1>
+                       <h1 className=' border border-gray-500 w-full bg-white py-2 px-4  text-black text-center'>Template 1</h1>
                         <Image src="/Preview1.png" alt="PREVIEW_IMAGE" width={300} height={300} onClick={() => setSelectedTemplate('template1')} className='block w-full transition duration-300 ease-in-out filter blur-3 cursor-pointer '/>
                         </div>
                         <div className=' bg-slate-400'>
-                        <button   onClick={() => setSelectedTemplate('template2')} className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
+                        <h1   onClick={() => setSelectedTemplate('template2')} className="w-full py-2 px-4 border border-gray-300 rounded hover:bg-gray-100 transition duration-200">
                             Template 2
-                        </button>
+                        </h1>
                         <Image src="/Preview2.png" alt="PREVIEW_IMAGE" width={300} height={300} onClick={() => setSelectedTemplate('template2')} className='cursor-pointer rounded-lg'/>
                         </div>
                         <div className=' bg-slate-400'>
